@@ -1,24 +1,28 @@
 <template>
   <HeaderComponent/>
+  <main>
+    <TitleListComponent/>
+  </main>
 </template>
 
 <script>
 import {store} from './store.js';
 
 import HeaderComponent from './components/HeaderComponent.vue';
+import TitleListComponent from './components/TitleListComponent.vue'
 
   export default {
     components: {
-      HeaderComponent
+      HeaderComponent,
+      TitleListComponent
     },
     data(){
       return{
         store,
-
       }
     },
     created(){
-      store.callAPI(store.popularEndpoint[1])
+      store.callAPI(store.popularEndpoint[0])
     }
   }
 </script>
