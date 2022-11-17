@@ -2,7 +2,8 @@
     <div class="col-12 col-sm-6 col-md-4 col-lg-3">
         <div class="title faces-wrapper">
             <div class="front-face">
-                <img :src="store.getCoverImage(title.poster_path)" alt="">
+                <img v-if="title.poster_path != null" :src="store.getCoverImage(title.poster_path)" alt="">
+                <img v-else src="../../public/img/not-found.jpeg" alt="cover not found backdrop img">
             </div>
             <div class="back-face">
                 <h3>{{store.activeCategory == 0 ? title.title : title.name}}</h3>
