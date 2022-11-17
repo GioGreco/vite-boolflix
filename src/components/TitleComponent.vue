@@ -19,12 +19,12 @@
                             <span v-if="title.vote_average == 0">N/C</span>
                         </div>
                         <div class="genres">
-                            <span>Genres:</span>
-                            <span class="mx-1" v-for="item in title.genre_ids">{{item}}</span>
+                            <span class="me-2">Genres:</span>
+                            <span class="genre-item" v-for="item in store.titleGenreList[currentTitle]">{{item.name}}</span>
                         </div>
                         <div class="cast">
-                            <span>Cast:</span>
-                            <span class="mx-1" v-for="item in store.titleCastList[currentTitle]">{{item}}</span>
+                            <span class="me-2">Cast:</span>
+                            <span class="cast-item" v-for="item in store.titleCastList[currentTitle]">{{item}}</span>
                         </div>
                         <p class="mt-4">Synopsis:</p>
                         <div>{{title.overview}}</div>
@@ -47,8 +47,6 @@ import {store} from '../store';
             return{
                 store,
             }
-        }, 
-        mounted(){
         }
     }
 </script>
@@ -97,6 +95,20 @@ import {store} from '../store';
                 margin: 10px 0;
                 i{
                     color: gold
+                }
+            }
+
+            .genres{
+                margin: 10px 0;
+                .genre-item:not(:last-of-type)::after{
+                    content: ', ';
+                }
+            }
+
+            .cast{
+                margin: 10px 0;
+                .cast-item:not(:last-of-type)::after{
+                    content: ', ';
                 }
             }
 

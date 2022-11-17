@@ -19,7 +19,7 @@ import CategorySelectorComponent from './components/CategorySelectorComponent.vu
     HeaderComponent,
     TitleListComponent,
     CategorySelectorComponent
-},
+    },
     data(){
       return{
         store,
@@ -27,7 +27,6 @@ import CategorySelectorComponent from './components/CategorySelectorComponent.vu
     },
     created(){
       store.callAPI(store.popularEndpoint[store.activeCategory]);
-      store.getGenres()
     }
   }
 </script>
