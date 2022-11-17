@@ -11,9 +11,16 @@ export const store = reactive({
     titleCastList: [],
     titleGenreList: [],
     activeCategory: 0,
+    igniteTransition: false,
 
 
     callAPI(endpoint){
+        //FORZATO L'AVVIO DELLA TRANSIZIONE DELLE CARDS
+        this.igniteTransition = false;
+        setTimeout(()=>{
+            this.igniteTransition = true;
+        }, 100)
+
         this.getGenres();
         this.titleCastList = [];
         this.titleGenreList = [];

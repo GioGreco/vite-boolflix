@@ -1,6 +1,6 @@
 <template>
         <TransitionGroup name="titlesFX" tag="div" class="row m-0 p-5 g-4">
-            <TitleComponent v-for="(item,index) in store.titleList" :key="index" :title="item" :currentTitle="index"/>
+            <TitleComponent v-show="store.igniteTransition" v-for="(item,index) in store.titleList" :key="index" :title="item" :currentTitle="index"/>
         </TransitionGroup>
 </template>
 
@@ -25,6 +25,7 @@ import TitleComponent from './TitleComponent.vue';
 <style lang="scss" scoped>
     .row{
         background: radial-gradient(circle, rgba(190,19,37,0.7763480392156863) 0%, rgba(0,0,0,0.8) 80%);
+        min-height: 100vh;
     }
 
     //ANIMAZIONI
