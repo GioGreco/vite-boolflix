@@ -15,11 +15,16 @@
                         <div class="stars">
                             <span>Rating: </span>
                             <i v-for="star in (Math.round(title.vote_average / 2))" class="fa-solid fa-star"></i>
+                            <i v-for="star in (5 - (Math.round(title.vote_average / 2)))" class="fa-regular fa-star"></i>
                             <span v-if="title.vote_average == 0">N/C</span>
                         </div>
                         <div class="genres">
                             <span>Genres:</span>
                             <span class="mx-1" v-for="item in title.genre_ids">{{item}}</span>
+                        </div>
+                        <div class="cast">
+                            <span>Cast:</span>
+                            <span class="mx-1" v-for="item in store.titleCastList[currentTitle]">{{item}}</span>
                         </div>
                         <p class="mt-4">Synopsis:</p>
                         <div>{{title.overview}}</div>
@@ -35,12 +40,15 @@ import {store} from '../store';
     export default {
         name: 'TitleComponent',
         props: {
-            title: Object
+            title: Object,
+            currentTitle: Number
         },
         data(){
             return{
-                store
+                store,
             }
+        }, 
+        mounted(){
         }
     }
 </script>

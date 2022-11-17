@@ -1,6 +1,6 @@
 <template>
         <TransitionGroup name="titlesFX" tag="div" class="row m-0 p-5 g-4">
-            <TitleComponent v-for="(item,index) in store.titleList" :key="item.id" :title="item"/>
+            <TitleComponent v-for="(item,index) in store.titleList" :key="index" :title="item" :currentTitle="index"/>
         </TransitionGroup>
 </template>
 
