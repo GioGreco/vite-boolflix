@@ -35,7 +35,7 @@ header{
         margin: 0 10px;
         background-color: transparent;
         border: none;
-        color: grey
+        color: grey;
     }
 }
     

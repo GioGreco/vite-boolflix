@@ -12,6 +12,12 @@ export const store = reactive({
     titleList: [],
     activeCategory: 0,
 
+    genreFilter: {
+        params: {
+            api_key: 'a8049b8c9e734e7c0f349c01d64a7f91',
+        }
+    },
+
     flagsAPIurl: 'https://countryflagsapi.com/png/',
 
 
@@ -55,5 +61,45 @@ export const store = reactive({
         const imgURL = this.baseImgURL + hash;
 
         return imgURL
-    }
+    },
+
+    genresList: [],
+    genresEndpoint: ['genre/movie/list', 'genre/tv/list'],
+    getGenres(){
+        let genreURL = this.apiURL + this.genresEndpoint[this.activeCategory];
+        axios.get(genreURL, this.genreFilter).then((res)=>{
+            this.genresList = [...res.data.genres];
+            console.log(this.genresList);
+            // setTimeout(()=>{
+            //     let filtGenre = this.genresList.filter(genre => genre.id == id);
+            //     console.log(filtGenre);
+            //     let parsed = JSON.parse(JSON.stringify(filtGenre));
+            //     console.log(parsed[0].name);
+            //     return this.parsed[0].name
+            // }, 500)
+            // let filtGenre = this.genresList.filter(genre => genre.id == id);
+            // console.log(filtGenre);
+            // let parsed = JSON.parse(JSON.stringify(filtGenre));
+            // console.log(parsed[0].name);
+            // return parsed[0].name
+        })
+    },
+    // parseGenre(id){
+    //     let parsed = [];
+    //     setTimeout(()=>{
+    //         let filtGenre = this.genresList.filter(genre => genre.id == id);
+    //         console.log(filtGenre);
+    //         parsed = [...JSON.parse(JSON.stringify(filtGenre))];
+    //         console.log(parsed[0].name);
+    //         return parsed[0].name
+    //     }, 500)
+
+    //     return parsed[0].name
+    //     let filtGenre = this.genresList.filter(genre => genre.id == id);
+    //     let parsed = JSON.parse(JSON.stringify(filtGenre));
+        
+    //     console.log(parsed[0].name)
+
+    //     return parsed[0].name
+    // }
 })

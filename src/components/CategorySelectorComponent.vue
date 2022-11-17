@@ -26,6 +26,7 @@ import {store} from '../store.js';
         @include dflex;
         justify-content: center;
         padding: 25px;
+        background-color: rgba(0, 0, 0, 0.8);;
 
         span{
             margin: 0 5px;
@@ -35,11 +36,10 @@ import {store} from '../store.js';
             color: $white-text;
             display: block;
             padding: 5px;
-            background-image: linear-gradient(180deg, $darkgrey-bg 100%, $red-special 120%);
+            background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 100%, $red-special 120%);
 
             &.active{
-                // box-shadow: 0px 8px 8px -4px $red-special;
-                background-image: linear-gradient(180deg, $darkgrey-bg 68%, $red-special 120%);
+                background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 30%, $red-special 150%);
                 transition: background-image 1s;
             }
         }

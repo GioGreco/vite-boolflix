@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import {store} from './store.js';
 
 import HeaderComponent from './components/HeaderComponent.vue';
@@ -26,6 +27,7 @@ import CategorySelectorComponent from './components/CategorySelectorComponent.vu
     },
     created(){
       store.callAPI(store.popularEndpoint[store.activeCategory]);
+      // store.getGenres()
     }
   }
 </script>
