@@ -32,7 +32,7 @@ export const store = reactive({
 
         let myFilter = {
             params: {
-                api_key: 'a8049b8c9e734e7c0f349c01d64a7f91',
+                api_key: '49513c8494c3b9a0b063220206dc74c8',
                 query: this.query
             }
         }
