@@ -1,8 +1,8 @@
 <template>
     <div>
-        <form @submit.prevent="store.callAPI(store.categoryEndpoint[0])">
-            <input v-model="store.query" type="text" placeholder="cerca...">
-            <button type="submit" class="btn btn-danger">Cerca</button>
+        <form @submit.prevent="store.callAPI(store.categoryEndpoint[store.activeCategory])">
+            <input v-model="store.query" type="text" placeholder="search...">
+            <button type="submit" class="btn btn-danger"><i class="fa-solid fa-magnifying-glass"></i></button>
         </form>
     </div>
 </template>

@@ -6,10 +6,11 @@ export const store = reactive({
     categoryEndpoint: ['search/movie', 'search/tv'],
     popularEndpoint: ['movie/popular', 'tv/popular'],
     query: '',
-    baseImgURL: 'https://image.tmdb.org/t/p/w342/',
+    baseImgURL: 'https://image.tmdb.org/t/p/w342',
     loading: false,
     activeEndpoint: '',
     titleList: [],
+    activeCategory: 0,
 
     flagsAPIurl: 'https://countryflagsapi.com/png/',
 
@@ -17,6 +18,11 @@ export const store = reactive({
     callAPI(endpoint){
         this.loading = true;
         this.activeEndpoint = endpoint;
+        if(this.popularEndpoint.indexOf(endpoint) == 0 || this.categoryEndpoint.indexOf(endpoint) == 0){
+            this.activeCategory = 0;
+        }else{
+            this.activeCategory = 1;
+        }
 
         let myFilter = {
             params: {
@@ -29,16 +35,25 @@ export const store = reactive({
 
         axios.get(apiurl, myFilter).then((res)=>{
             this.titleList = [...res.data.results];
-            console.log(this.titleList)
         })
     },
 
     getCountryFlag(country){
         country == 'uk'? country = 'gb': '';
         country == 'en'? country = 'us': '';
+        country == 'ja'? country = 'jp': '';
+        country == 'el'? country = 'gr': '';
+        country == 'cs'? country = 'cz': '';
+        country == 'ko'? country = 'kr': '';
 
         const flagAPI = this.flagsAPIurl + country
 
         return flagAPI;
+    },
+
+    getCoverImage(hash){
+        const imgURL = this.baseImgURL + hash;
+
+        return imgURL
     }
 })
